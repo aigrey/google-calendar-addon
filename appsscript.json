@@ -1,0 +1,61 @@
+{
+  "timeZone": "America/New_York",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/calendar.addons.execute",
+    "https://www.googleapis.com/auth/calendar.readonly",
+    "https://www.googleapis.com/auth/drive.addons.metadata.readonly",
+    "https://www.googleapis.com/auth/script.locale",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/script.external_request",
+    "https://www.googleapis.com/auth/script.container.ui",
+    "https://www.googleapis.com/auth/calendar.events",
+    "https://www.google.com/calendar/feeds"
+  ],
+  "runtimeVersion": "V8",
+  "addOns": {
+    "common": {
+      "name": "Event Setter",
+      "logoUrl": "https://www.gstatic.com/images/icons/material/system/1x/pets_black_48dp.png",
+      "useLocaleFromApp": true,
+      "homepageTrigger": {
+        "runFunction": "onHomepage",
+        "enabled": true
+      },
+      "universalActions": [
+        {
+          "label": "Learn more about Cataas",
+          "openLink": "https://cataas.com"
+        }
+      ]
+    },
+    "gmail": {
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "onGmailMessage"
+        }
+      ],
+      "composeTrigger": {
+        "selectActions": [
+          {
+            "text": "Insert cat",
+            "runFunction": "onGmailCompose"
+          }
+        ],
+        "draftAccess": "NONE"
+      }
+    },
+    "drive": {
+      "onItemsSelectedTrigger": {
+        "runFunction": "onDriveItemsSelected"
+      }
+    },
+    "calendar": {
+      "eventOpenTrigger": {
+        "runFunction": "onCalendarEventOpen"
+      }
+    }
+  }
+}
